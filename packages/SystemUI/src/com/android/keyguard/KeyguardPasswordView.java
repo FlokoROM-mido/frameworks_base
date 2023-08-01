@@ -42,6 +42,7 @@ import com.android.internal.widget.LockPatternUtils;
 import com.android.internal.widget.LockscreenCredential;
 import com.android.internal.widget.LockPatternUtils.RequestThrottledException;
 import com.android.internal.widget.TextViewInputDisabler;
+import com.android.keyguard.KeyguardSecurityModel.SecurityMode;
 import com.android.systemui.R;
 
 import java.util.List;
@@ -402,6 +403,11 @@ public class KeyguardPasswordView extends KeyguardAbsKeyInputView
                 com.android.internal.R.string.keyguard_accessibility_password_unlock);
     }
 
+    @Override
+    public SecurityMode getSecurityMode() {
+        return SecurityMode.Password;
+    }
+    
     private AsyncTask<?, ?, ?> validateQuickUnlock(final LockPatternUtils utils,
             final LockscreenCredential password,
             final int userId) {
